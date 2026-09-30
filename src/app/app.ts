@@ -1,12 +1,19 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Formulario } from './formulario/formulario';
+import { PacienteService } from './services/paciente';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Formulario],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('registro-pacientes');
+
+  pacientes: any;
+
+  constructor(private servicio: PacienteService) {
+    this.pacientes = this.servicio.pacientes;
+  }
+
 }
